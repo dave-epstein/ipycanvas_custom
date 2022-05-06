@@ -143,7 +143,7 @@ async function fromBytes(array: Uint8ClampedArray) : Promise<HTMLImageElement> {
 export async function bufferToImage(buffer: any): Promise<HTMLImageElement> {
   let url: string;
 
-  const blob = new Blob([buffer], { type: 'image/jpeg' });
+  const blob = new Blob([buffer], { type: 'image/png' });
   url = URL.createObjectURL(blob);
 
   const img = new Image();
