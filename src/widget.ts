@@ -387,7 +387,7 @@ class CanvasModel extends DOMWidgetModel {
         await this.drawImage(args, buffers);
         break;
       case 'putImageData':
-        await this.currentCanvas.putImageData(args, buffers);
+        await this.putImageData(args, buffers);
         break;
       case 'set':
         await this.setAttr(args[0], args[1]);
