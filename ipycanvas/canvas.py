@@ -1450,29 +1450,29 @@ class Canvas(_CanvasBase):
             self._client_ready_callbacks()
 
         if content.get("event", "") == "mouse_move":
-            self._mouse_move_callbacks(content["x"], content["y"])
+            self._mouse_move_callbacks(content["x"], content["y"], content)
         if content.get("event", "") == "mouse_down":
-            self._mouse_down_callbacks(content["x"], content["y"])
+            self._mouse_down_callbacks(content["x"], content["y"], content)
         if content.get("event", "") == "mouse_up":
-            self._mouse_up_callbacks(content["x"], content["y"])
+            self._mouse_up_callbacks(content["x"], content["y"], content)
         if content.get("event", "") == "mouse_out":
-            self._mouse_out_callbacks(content["x"], content["y"])
+            self._mouse_out_callbacks(content["x"], content["y"], content)
 
         if content.get("event", "") == "touch_start":
             self._touch_start_callbacks(
-                [(touch["x"], touch["y"]) for touch in content["touches"]]
+                [(touch["x"], touch["y"]) for touch in content["touches"]], content
             )
         if content.get("event", "") == "touch_end":
             self._touch_end_callbacks(
-                [(touch["x"], touch["y"]) for touch in content["touches"]]
+                [(touch["x"], touch["y"]) for touch in content["touches"]], content
             )
         if content.get("event", "") == "touch_move":
             self._touch_move_callbacks(
-                [(touch["x"], touch["y"]) for touch in content["touches"]]
+                [(touch["x"], touch["y"]) for touch in content["touches"]], content
             )
         if content.get("event", "") == "touch_cancel":
             self._touch_cancel_callbacks(
-                [(touch["x"], touch["y"]) for touch in content["touches"]]
+                [(touch["x"], touch["y"]) for touch in content["touches"]], content
             )
 
         if content.get("event", "") == "key_down":
@@ -1481,6 +1481,7 @@ class Canvas(_CanvasBase):
                 content["shift_key"],
                 content["ctrl_key"],
                 content["meta_key"],
+                content
             )
 
     def _draw_polygons_or_linesegments(
